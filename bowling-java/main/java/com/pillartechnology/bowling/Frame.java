@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Frame {
     protected List<Integer> rolls = new ArrayList<>();
-    private List<Integer> bonuses = new ArrayList<>();
+    protected List<Integer> bonuses = new ArrayList<>();
 
     public void addRoll(int pins) {
         rolls.add(pins);

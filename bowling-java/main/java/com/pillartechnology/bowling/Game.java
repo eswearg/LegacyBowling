@@ -16,15 +16,15 @@ public class Game {
     }
 
     public void roll(int pins) {
-        if(getCurrentFrame().isCompleted()) {
-            currentFrameIndex++;
-        }
+        getCurrentFrame().addRoll(pins);
 
         for(int i = 0; i < currentFrameIndex; i++) {
             frames.get(i).onRolled(pins);
         }
 
-        getCurrentFrame().addRoll(pins);
+        if(getCurrentFrame().isCompleted()) {
+            currentFrameIndex++;
+        }
     }
 
     public int getScore() {
