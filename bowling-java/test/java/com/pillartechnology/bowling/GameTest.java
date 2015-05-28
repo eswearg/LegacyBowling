@@ -54,6 +54,26 @@ public class GameTest {
         assertThat(game.getScore(), is(133));
     }
 
+    @Test
+    public void getFrame_WithOneFrameAndTwoRolls_ReturnsCorrectScore() {
+        Game game = new Game();
+        game.roll(1);
+        game.roll(1);
+
+        assertThat(game.getFrames().get(0).getScore(), is("2"));
+    }
+
+    @Test
+    public void getFrame_WithTwoFramesAndFourRolls_ReturnsCorrectScore() {
+        Game game = new Game();
+        game.roll(1);
+        game.roll(1);
+        game.roll(1);
+        game.roll(1);
+
+        assertThat(game.getFrames().get(0).getScore(), is("2"));
+    }
+
     private void rollFullGame(Game game) {
         game.roll(1);
         game.roll(4);

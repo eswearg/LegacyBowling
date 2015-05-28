@@ -1,11 +1,31 @@
 package com.pillartechnology.bowling;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Game {
     private int[] rolls =new int[21];
     private int currentRoll;
 
+    private List<Frame> frames = new ArrayList<>();
+    private int currentFrameIndex = 0;
+
+    public Game() {
+        for(int i = 0; i < 9; i++) {
+            frames.add(new Frame());
+        }
+
+        frames.add(new TenthFrame());
+    }
+
     public void roll(int pins) {
         rolls[currentRoll++] = pins;
+
+        if(getCurrentFrame().isCompleted()) {
+            currentFrameIndex += 1;
+        }
+
+        getCurrentFrame().addRoll(pins);
     }
 
     public int getScore() {
@@ -49,5 +69,13 @@ public class Game {
 
     private boolean isStrike(int roll) {
         return roll == 10;
+    }
+
+    public List<Frame> getFrames() {
+        return frames;
+    }
+
+    private Frame getCurrentFrame() {
+        return frames.get(currentFrameIndex);
     }
 }
