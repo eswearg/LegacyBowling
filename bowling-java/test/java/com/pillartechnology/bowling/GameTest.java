@@ -1,5 +1,6 @@
 package com.pillartechnology.bowling;
 
+import org.hamcrest.core.IsNull;
 import org.junit.Test;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -32,8 +33,9 @@ public class GameTest {
         game.roll(5);
         game.roll(5);
         game.roll(1);
+        game.roll(1);
 
-        assertThat(game.getScore(), is(12));
+        assertThat(game.getScore(), is(13));
     }
 
     @Test
@@ -60,7 +62,7 @@ public class GameTest {
         game.roll(1);
         game.roll(1);
 
-        assertThat(game.getFrames().get(0).getScore(), is("2"));
+        assertThat(game.getFrames().get(0).getScore(), is(2));
     }
 
     @Test
@@ -71,7 +73,7 @@ public class GameTest {
         game.roll(1);
         game.roll(1);
 
-        assertThat(game.getFrames().get(0).getScore(), is("2"));
+        assertThat(game.getFrames().get(0).getScore(), is(2));
     }
 
     @Test
@@ -80,7 +82,7 @@ public class GameTest {
         game.roll(5);
         game.roll(5);
 
-        assertThat(game.getFrames().get(0).getScore(), is(""));
+        assertThat(game.getFrames().get(0).getScore(), IsNull.nullValue());
     }
 
     @Test
@@ -90,7 +92,7 @@ public class GameTest {
         game.roll(5);
         game.roll(1);
 
-        assertThat(game.getFrames().get(0).getScore(), is("11"));
+        assertThat(game.getFrames().get(0).getScore(), is(11));
     }
 
     @Test
@@ -98,7 +100,7 @@ public class GameTest {
         Game game = new Game();
         game.roll(10);
 
-        assertThat(game.getFrames().get(0).getScore(), is(""));
+        assertThat(game.getFrames().get(0).getScore(), is(IsNull.nullValue()));
     }
 
     @Test
@@ -107,7 +109,7 @@ public class GameTest {
         game.roll(10);
         game.roll(1);
 
-        assertThat(game.getFrames().get(0).getScore(), is(""));
+        assertThat(game.getFrames().get(0).getScore(), is(IsNull.nullValue()));
     }
 
     @Test
@@ -117,7 +119,7 @@ public class GameTest {
         game.roll(1);
         game.roll(1);
 
-        assertThat(game.getFrames().get(0).getScore(), is("12"));
+        assertThat(game.getFrames().get(0).getScore(), is(12));
     }
 
     @Test
@@ -127,7 +129,7 @@ public class GameTest {
         game.roll(10);
         game.roll(1);
 
-        assertThat(game.getFrames().get(0).getScore(), is("21"));
+        assertThat(game.getFrames().get(0).getScore(), is(21));
     }
 
     @Test
@@ -137,7 +139,7 @@ public class GameTest {
         game.roll(10);
         game.roll(10);
 
-        assertThat(game.getFrames().get(0).getScore(), is("30"));
+        assertThat(game.getFrames().get(0).getScore(), is(30));
     }
 
     @Test
@@ -145,16 +147,16 @@ public class GameTest {
         Game game = new Game();
         rollFullGame(game);
 
-        assertThat(game.getFrames().get(0).getScore(), is("5"));
-        assertThat(game.getFrames().get(1).getScore(), is("9"));
-        assertThat(game.getFrames().get(2).getScore(), is("15"));
-        assertThat(game.getFrames().get(3).getScore(), is("20"));
-        assertThat(game.getFrames().get(4).getScore(), is("11"));
-        assertThat(game.getFrames().get(5).getScore(), is("1"));
-        assertThat(game.getFrames().get(6).getScore(), is("16"));
-        assertThat(game.getFrames().get(7).getScore(), is("20"));
-        assertThat(game.getFrames().get(8).getScore(), is("20"));
-        assertThat(game.getFrames().get(9).getScore(), is("16"));
+        assertThat(game.getFrames().get(0).getScore(), is(5));
+        assertThat(game.getFrames().get(1).getScore(), is(9));
+        assertThat(game.getFrames().get(2).getScore(), is(15));
+        assertThat(game.getFrames().get(3).getScore(), is(20));
+        assertThat(game.getFrames().get(4).getScore(), is(11));
+        assertThat(game.getFrames().get(5).getScore(), is(1));
+        assertThat(game.getFrames().get(6).getScore(), is(16));
+        assertThat(game.getFrames().get(7).getScore(), is(20));
+        assertThat(game.getFrames().get(8).getScore(), is(20));
+        assertThat(game.getFrames().get(9).getScore(), is(16));
     }
 
     private void rollFullGame(Game game) {

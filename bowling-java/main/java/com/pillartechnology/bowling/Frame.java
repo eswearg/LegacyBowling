@@ -11,9 +11,9 @@ public class Frame {
         rolls.add(pins);
     }
 
-    public String getScore() {
+    public Integer getScore() {
         if(!isCompleted())
-            return "";
+            return null;
 
         int score = 0;
 
@@ -21,7 +21,7 @@ public class Frame {
             score += roll;
         }
 
-        return Integer.toString(score + getBonus());
+        return score + getBonus();
     }
 
     public void onRolled(int pins) {
