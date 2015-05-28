@@ -74,33 +74,116 @@ public class GameTest {
         assertThat(game.getFrames().get(0).getScore(), is("2"));
     }
 
-    private void rollFullGame(Game game) {
+    @Test
+    public void getFrame_WithSpareAndNoFollowupRolls_ReturnsNothing() {
+        Game game = new Game();
+        game.roll(5);
+        game.roll(5);
+
+        assertThat(game.getFrames().get(0).getScore(), is(""));
+    }
+
+    @Test
+    public void getFrame_WithSpare_ReturnsCorrectScore() {
+        Game game = new Game();
+        game.roll(5);
+        game.roll(5);
         game.roll(1);
-        game.roll(4);
 
-        game.roll(4);
-        game.roll(5);
+        assertThat(game.getFrames().get(0).getScore(), is("11"));
+    }
 
-        game.roll(6);
-        game.roll(4);
-
-        game.roll(5);
-        game.roll(5);
-
+    @Test
+    public void getFrame_WithStrikeAndNoFollowupRolls_ReturnsNothing() {
+        Game game = new Game();
         game.roll(10);
 
-        game.roll(0);
+        assertThat(game.getFrames().get(0).getScore(), is(""));
+    }
+
+    @Test
+    public void getFrame_WithStrikeAndOneFollowupRolls_ReturnsNothing() {
+        Game game = new Game();
+        game.roll(10);
         game.roll(1);
 
-        game.roll(7);
+        assertThat(game.getFrames().get(0).getScore(), is(""));
+    }
+
+    @Test
+    public void getFrame_WithStrike_ReturnsCorrectScore() {
+        Game game = new Game();
+        game.roll(10);
+        game.roll(1);
+        game.roll(1);
+
+        assertThat(game.getFrames().get(0).getScore(), is("12"));
+    }
+
+    @Test
+    public void getFrame_WithTwoStrikes_ReturnsCorrectScore() {
+        Game game = new Game();
+        game.roll(10);
+        game.roll(10);
+        game.roll(1);
+
+        assertThat(game.getFrames().get(0).getScore(), is("21"));
+    }
+
+    @Test
+    public void getFrame_WithThreeStrikes_ReturnsCorrectScore() {
+        Game game = new Game();
+        game.roll(10);
+        game.roll(10);
+        game.roll(10);
+
+        assertThat(game.getFrames().get(0).getScore(), is("30"));
+    }
+
+    @Test
+    public void getFrame_WithFullGame_ReturnsCorrectScore() {
+        Game game = new Game();
+        rollFullGame(game);
+
+        assertThat(game.getFrames().get(0).getScore(), is("5"));
+        assertThat(game.getFrames().get(1).getScore(), is("9"));
+        assertThat(game.getFrames().get(2).getScore(), is("15"));
+        assertThat(game.getFrames().get(3).getScore(), is("20"));
+        assertThat(game.getFrames().get(4).getScore(), is("11"));
+        assertThat(game.getFrames().get(5).getScore(), is("1"));
+        assertThat(game.getFrames().get(6).getScore(), is("16"));
+        assertThat(game.getFrames().get(7).getScore(), is("20"));
+        assertThat(game.getFrames().get(8).getScore(), is("20"));
+        assertThat(game.getFrames().get(9).getScore(), is("16"));
+    }
+
+    private void rollFullGame(Game game) {
+        game.roll(1); // 1
+        game.roll(4);
+
+        game.roll(4); // 2
+        game.roll(5);
+
+        game.roll(6); // 3
+        game.roll(4);
+
+        game.roll(5); // 4
+        game.roll(5);
+
+        game.roll(10); // 5
+
+        game.roll(0); // 6
+        game.roll(1);
+
+        game.roll(7); // 7
         game.roll(3);
 
-        game.roll(6);
+        game.roll(6); // 8
         game.roll(4);
 
-        game.roll(10);
+        game.roll(10); // 9
 
-        game.roll(2);
+        game.roll(2); // 10
         game.roll(8);
         game.roll(6);
     }

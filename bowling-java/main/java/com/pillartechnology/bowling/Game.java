@@ -22,7 +22,11 @@ public class Game {
         rolls[currentRoll++] = pins;
 
         if(getCurrentFrame().isCompleted()) {
-            currentFrameIndex += 1;
+            currentFrameIndex++;
+        }
+
+        for(int i = 0; i < currentFrameIndex; i++) {
+            frames.get(i).onRolled(pins);
         }
 
         getCurrentFrame().addRoll(pins);
@@ -77,5 +81,9 @@ public class Game {
 
     private Frame getCurrentFrame() {
         return frames.get(currentFrameIndex);
+    }
+
+    private Frame getPreviousFrame() {
+        return frames.get(currentFrameIndex - 1);
     }
 }
