@@ -16,3 +16,9 @@ source: http://butunclebob.com/ArticleS.UncleBob.TheBowlingGameKata
 New functionality:
 
 Get the list of frames for the current game with scores. In the cases where the frame score is not yet calculable, return an empty string.
+
+     _____________________________________________________________
+    |__1__|__2__|__3__|__4__|__5__|__6__|__7__|__8__|__9__|__10___|
+    |  1|4|  4|5|  6|/|   | |   | |   | |   | |   | |   | |   | | |
+    |  5  |  14 |     |     |     |     |     |     |     |       |
+    '-----'-----'-----'-----'-----'-----'-----'-----'-----'-------'
