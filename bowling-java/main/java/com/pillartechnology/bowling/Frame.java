@@ -12,7 +12,7 @@ public class Frame {
     }
 
     public Integer getScore() {
-        if(!isCompleted())
+        if(!isScorable())
             return null;
 
         int score = 0;

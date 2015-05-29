@@ -10,7 +10,7 @@ public class GameTest {
     @Test
     public void getScore_WithGutterGame_Returns0() {
         Game game = new Game();
-        for(int i = 0; i < 21; i++) {
+        for(int i = 0; i < 20; i++) {
             game.roll(0);
         }
 
